@@ -8,10 +8,27 @@
   <!-- Localization-->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <remap from="scan" to="udacity_bot/laser/scan"/>
-    <param name="odom_frame_id" value="odom"/>
+
+    <!-- Overall Filter -->
+    <param name="min_particles" value="50"/>
+    <param name="max_particles" value="200"/>
+    <param name="update_min_a" value="0.1"/>
+    <param name="update_min_d" value="0.25"/>
+
+    <!-- Laser -->
+    <param name="laser_max_beams" value="20"/>
+    <param name="laser_z_rand" value="0.05"/>
+    <param name="laser_z_hit" value="0.95"/>
+
+    <!-- Odometry -->
     <param name="odom_model_type" value="diff-corrected"/>
     <param name="base_frame_id" value="robot_footprint"/>
     <param name="global_frame_id" value="map"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="odom_alpha1" value="0.05"/>
+    <param name="odom_alpha2" value="0.05"/>
+    <param name="odom_alpha3" value="0.05"/>
+    <param name="odom_alpha4" value="0.05"/>
   </node>
 
   <!-- Move base -->
@@ -30,4 +47,6 @@
     <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
 
   </node>
+
+
 </launch>
