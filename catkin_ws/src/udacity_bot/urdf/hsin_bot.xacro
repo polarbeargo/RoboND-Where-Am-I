@@ -48,36 +48,15 @@
       <origin xyz="0.2 0 0" rpy=" 0 0 0"/>
       <geometry>
         <box size=".3 .08 .04"/>
+        
       </geometry>
     </visual>
-
-    <collision name='driver_collision'>
-      <origin xyz="0.12 0 0.04" rpy=" 0 1.5707 1.5707"/> 
-      <geometry>
-        <cylinder radius=".08" length="0.199"/>
-      </geometry>
-    </collision>
-
-    <visual name='driver_visual'>
-      <origin xyz="0.12 0 0.04" rpy=" 0 1.5707 1.5707"/> 
-      <geometry>
-        <cylinder radius=".08" length="0.199"/>
-      </geometry>
-    </visual>
-
     <collision name='connector_collision'>
       <origin xyz="0.32 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
         <cylinder radius=".01" length="0.16"/>
       </geometry>
     </collision>
-
-    <visual name='connector_visual'>
-      <origin xyz="0.32 0 0" rpy=" 0 1.5707 1.5707"/> 
-      <geometry>
-        <cylinder radius=".01" length="0.16"/>
-      </geometry>
-    </visual>
 
     <collision name='back_caster_collision'>
       <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
@@ -124,24 +103,9 @@
     <visual name='back_shield1_visual'>
       <origin xyz="-0.19 0.0 0.12" rpy=" 0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.01"  length="0.18"/>
+         <box size=".1 .3 0.02"/>
       </geometry>
     </visual>
-
-    <visual name='back_shield2_visual'>
-      <origin xyz="-0.16 0.0 0.1" rpy=" 0 1.5707 1.5707"/>
-      <geometry>
-        <cylinder radius="0.01"  length="0.18"/>
-      </geometry>
-    </visual>
-
-    <visual name='back_shield3_visual'>
-      <origin xyz="-0.13 0.0 0.08" rpy=" 0 1.5707 1.5707"/>
-      <geometry>
-        <cylinder radius="0.01"  length="0.18"/>
-      </geometry>
-    </visual>
-
   </link>
 
   <link name="left_wheel">

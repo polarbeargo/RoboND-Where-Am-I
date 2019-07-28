@@ -20,7 +20,7 @@
 
 
   <gazebo reference="camera">
-    <material>Gazebo/Red</material>
+    <material>Gazebo/Blue</material>
     <sensor type="camera" name="camera1">
       <update_rate>30.0</update_rate>
       <camera name="head">
@@ -90,10 +90,10 @@
   </gazebo>
 
   <gazebo reference="left_wheel">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Red</material>
   </gazebo>
   <gazebo reference="right_wheel">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Red</material>
   </gazebo>
 
   <gazebo reference="chassis">
