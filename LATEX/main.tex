@@ -49,7 +49,6 @@ Robot, IEEEtran, Udacity, \LaTeX, Localization, Adaptive Monte Carlo Localizatio
 
 \section{Background}
 In the book Probabilistic Robotic (Thrun et al. 2005) described there are several approach to help robot perform localization problem from Extend Kalman filter to Marco, to Monte Carlo and finally Grid. In this project, Jackal race world is a local localization problem which has information robot's initial pose relate to static environment collecting sensory information using range finder sensors from environment.
-.\cite{lamport1994latex}
 
 \subsection{Kalman Filters}
  Kalman filters can take data with a lot of noisy or uncertainty in the measurements and provide very accurate estimate of the real value and can do it very fast don't need wait a lot of data to come. The Kalman Filter is applicable to problems with linear motion and measurement functions. This is limiting, as much of the real world is nonlinear.
@@ -76,7 +75,7 @@ MCL is easy to program compare to EKF. MCL uses particle to localize robot's pos
 \end {itemize}
 
 \subsection{Achievements}
-You should describe what you achieved for localization in the project with the benchmark model and your own model. Includes charts and graphs show how parameters affect your performance. 
+By tuning parameter in costmap common params.yaml the designed robot can localized itself and reach their destination. With navigation goal.cpp node will navigation robot to It's goal.  
 
 % Robot Models
 \subsection{Benchmark Model: Udacity Bot}
@@ -89,22 +88,27 @@ You should describe what you achieved for localization in the project with the b
       \caption{Robot model with a camera and laser rangefinder.}
       \label{fig:robot1}
 \end{figure}
-The Robot's design considerations should include: the size of the robot, the layout of sensors. This information can be shown in the form of a chart / table.
-%example for building table
+In this section build a very basic mobile robot model named Udacity bot by creating its Unified Robot Description Format (URDF file). The robot designed geometry and parameters such as collision and inertia are set in configure. The Udacity bot has  chassis size [0.4, 0.2, 0.1] with 2 casters provide balance with radius shape 0.0499 and two wheels with cylinder radius="0.1" length="0.05" on-board with camera and laser range finder.
+
 \begin{table}[h]
-\caption{Table}
-\label{table_example}
-\begin{center}
-\begin{tabular}{|c||c|}
-\hline
-One & Two\\
-\hline
-Three & Four\\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
+ \begin{center}
+      \begin{tabular}{ |c|c|c| } 
+       \hline
+       Part & Geometry & size \\
+       \hline
+       Left and right wheel & Cylinder & length:0.05, radius:0.1 \\
+       Chassis & Cube & 0.4x0.2x0.1  \\ 
+       Back and Front casters & Sphere & radius:0.0499 \\
+       Camera & box & 0.05 x 0.05 x 0.05 \\
+       \hline
+      \end{tabular}
+      \caption{Udacity bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}
 \subsubsection{Packages Used}
+In Robotics navigation, AMCL package and the Navigation stack package are crucial for localize and navigation robot. AMCL package can dynamically adjusts the number of particles over a period of time, as the robot navigates around in a map. This adaptive process offers a significant computational advantage over MCL.  
+
 Udacity Bot package
 \begin{itemize}
 \item config
@@ -117,11 +121,63 @@ Udacity Bot package
 \item rviz
 \end {itemize}
 \subsubsection{Parameters}
-Localization parameters in the AMCL node should be described, as well as move\_base parameters in the configuration file. You should be able to clearly demonstrate your understanding of the impact of these parameters.
+Localization parameters in the AMCL node such as min and max particles is crucial as we can set from 10 to 100 to observe the performance and memory usage. As the particles increase same as the accuracy will increase. By tuning transform tolerance parameter will fix Costmap2DROS transform timeout indicative of the maximum allowed delay to either be not defined or to be too low for the system to compensate for. This maximum amount of delay or latency allowed between transforms is defined by the transform tolerance parameter. Except transform tolerance parameter several parameter was tested and tuned such as obstacle range, raytrace range and inflation radius. By increasing inflation radius will influence obstacles detect and the obstacles distance between the robot.
+\begin{table}[h]
+ \begin{center}
+       Costmap Parameters \\
+       \hline
+      \begin{tabular}{ |c|c|c| } 
+       Parameter & Global & local \\
+       \hline
+       global frame & map & Odom \\
+       robot base frame & robot footprint & robot footprint  \\ 
+       update frequency & 50.0 & 50.0 \\
+       publish frequency & 50.0 & 50.0\\
+       width & 40.0 & 20.0\\
+       height & 40.0 & 20.0 \\
+       resolution & 0.05  & 0.05 \\
+       static map & true & false \\
+       rolling window & false & true\\
+       \hline
+      \end{tabular}
+      \caption{Udacity bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}
 
+\begin{table}[h]
+ \begin{center}
+       AMCL node Parameters\\
+      \begin{tabular}{ |c|c| } 
+       min particles & 100 \\
+       \hline
+       max particles & 5000 \\
+       \hline
+       laser max beams & 30 \\
+       \hline
+      \end{tabular}
+      \caption{Udacity bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}
 \subsection{Personal Model}
 % ditto
 \subsubsection{Model design}
+By creating another Robot Description Format (URDF file) base on Udacity bot and the same package to perform publisher and subscriber .The designed a robot model named Hsin bot has chassis size [0.4, 0.2, 0.1] with 2 casters provide balance with radius shape 0.0499 and two wheels with cylinder radius="0.1" length="0.05" on-board with camera and laser range finder which the camera is mount on front chassis has size [0.05,0.05, 0.05] and add three long and short back shield with size [0.1, 0.02, 0.12] and [0.1, 0.3, 0.02]. 
+%example for inserting image
+\begin{figure}[thpb]
+      \centering
+      \includegraphics[width=\linewidth]{HsinBot1.jpg}
+      \caption{Hsin bot right front.}
+      \label{fig:robot1}
+\end{figure}
+%example for inserting image
+\begin{figure}[thpb]
+      \centering
+      \includegraphics[width=\linewidth]{HsinBot2.jpg}
+      \caption{Hsin bot top front.}
+      \label{fig:robot1}
+\end{figure}
 \subsubsection{Packages Used}
 HsinBot package
 \begin{itemize}
@@ -135,11 +191,84 @@ HsinBot package
 \item rviz
 \end {itemize}
 \subsubsection{Parameters}
-
-
+Most of the configuration of parameters in Hsin bot is base on Udacity bot except laser max beams to 20 in each scan to be used when updating the filter. Minimum allowed 50 number of particles. Maximum allowed 200 number of particles.
+\begin{table}[h]
+ \begin{center}
+      \begin{tabular}{ |c|c|c| } 
+       \hline
+       Part & Geometry & size \\
+       \hline
+       Left and right wheel & Cylinder & length:0.05, radius:0.1 \\
+       Chassis & Cube & 0.4x0.2x0.1  \\ 
+       Camera & box & 0.05 x 0.05 x 0.05 \\
+       Back and Front casters & Sphere & radius:0.0499 \\
+       Back shield1 & box & 0.1 x 0.3 x 0.02 \\
+       Left Back shield & box & 0.1 x 0.02 x 0.12 \\
+       Right Back shield & box & 0.1 x 0.02 x 0.12 \\
+       \hline
+      \end{tabular}
+      \caption{Hsin bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}
+\begin{table}[h]
+ \begin{center}
+       Costmap Parameters \\
+       \hline
+      \begin{tabular}{ |c|c|c| } 
+       Parameter & Global & local \\
+       \hline
+       global frame & map & Odom \\
+       robot base frame & robot footprint & robot footprint  \\ 
+       update frequency & 50.0 & 50.0 \\
+       publish frequency & 50.0 & 50.0\\
+       width & 40.0 & 20.0\\
+       height & 40.0 & 20.0 \\
+       resolution & 0.05  & 0.05 \\
+       static map & true & false \\
+       rolling window & false & true\\
+       \hline
+      \end{tabular}
+      \caption{Hsin bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}
+\begin{table}[h]
+ \begin{center}
+       AMCL node Parameters\\
+      \begin{tabular}{ |c|c| } 
+       min particles & 50 \\
+       \hline
+       max particles & 200 \\
+       \hline
+       laser max beams & 20 \\
+       \hline
+      \end{tabular}
+      \caption{Hsin bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}
+\begin{table}[h]
+ \begin{center}
+ costmap common params\\
+      \hline
+      \begin{tabular}{ |c|c| }
+       obstacle range & 1.2 \\
+       \hline
+       raytrace range & 1.2 \\
+       \hline
+       inflation radius & 0.4 \\
+       \hline
+       observation sources & laser scan sensor \\
+       \hline
+      \end{tabular}
+      \caption{Hsin bot specifications}
+      \label{table:1}
+      \end{center}
+      \end{table}  
+    
 \section{Results}
-Present an unbiased view of your robot's performance and justify your stance with facts. Do the localization results look reasonable? What is the duration for the particle filters to converge? How long does it take for the robot to reach the goal? Does it follow a smooth path to the goal? Does it have unexpected behavior in the process? \\
-For demonstrating your results, it is incredibly useful to have some watermarked charts, tables, and/or graphs for the reader to review. This makes ingesting the information quicker and easier.
+After parameter tuning and testing both robots are able to reach their destination
 
 \subsection{Localization Results}
 \subsubsection{Benchmark}
@@ -147,23 +276,37 @@ For demonstrating your results, it is incredibly useful to have some watermarked
 \begin{figure}[thpb]
       \centering
       \includegraphics[width=\linewidth]{acml.png}
-      \caption{Robot model with a camera and laser rangefinder.}
+      \caption{Udacity bot model with a camera and laser rangefinder.}
       \label{fig:robot1}
 \end{figure}
 %example for inserting image
 \begin{figure}[thpb]
       \centering
       \includegraphics[width=\linewidth]{f2.png}
-      \caption{Reaching the goal position.}
+      \caption{Udacity bot reaching the goal position.}
       \label{fig:robot1}
 \end{figure}
 \subsubsection{Student}
-
+%example for inserting image
+\begin{figure}[thpb]
+      \centering
+      \includegraphics[width=\linewidth]{rvizGoal.png}
+      \caption{Hsin bot enter the goal.}
+      \label{fig:robot1}
+\end{figure}
+%example for inserting image
+\begin{figure}[thpb]
+      \centering
+      \includegraphics[width=\linewidth]{gazeboGoal.jpg}
+      \caption{Hsin bot enter the goal.}
+      \label{fig:robot1}
+\end{figure}
 \subsection{Technical Comparison} % only facts
 Discuss the difference of the layout, parameters, performance etc. between the benchmark robot and your robot. It is acceptable for your custom robot to perform worse than the provided robot. The focus is on learning and understanding, not performance. 
 
 \section{Discussion}
-This is the only section of the report where you may include your opinion. However, make sure your opinion is based on facts. If your robot performed poorly, make mention of what may be the underlying issues. If the robot runs well, which aspects contribute to that? Again, avoid writing in the first person (i.e. Do not use words like "I" or "me"). If you really find yourself struggling to avoid the word "I" or "me"; sometimes, this can be avoid with the use of the word “one”. As an example: instead of : "I think the robot cannot localize itself because the sensor does not provide enough information for localization" try: "one may believe the localization performance is poor because the sensor layout is not able to provide enough information for localization". They say the same thing, but the second avoids the first person. 
+
+ 
 
 \subsection{Topics}
 \begin{itemize}
@@ -198,4 +341,7 @@ Examples:
 \bibliography{bib}
 \bibliographystyle{ieeetr}
 
+[1] Robust Monte Carlo Localization for Mobile Robots Sebastian Thrun, Dieter Fox, Wolfram Burgard, and Frank Dellaer, in Artificial Intelligence, Summer 200.
+
+[2] http://wiki.ros.org/amcl#Parameters
 \end{document}
