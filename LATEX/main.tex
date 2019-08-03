@@ -268,10 +268,12 @@ Most of the configuration of parameters in Hsin bot is base on Udacity bot excep
       \end{table}  
     
 \section{Results}
-After parameter tuning and testing both robots are able to reach their destination
+After parameter tuning and testing both robots their particle filters will convergence after a few seconds through Navigation stack both robots were able to reach their destination. However when encountering obstacles both robots will slightly paused reaction for the particle filters transform but will Navigation it's way out and toward their destination eventually.
 
 \subsection{Localization Results}
 \subsubsection{Benchmark}
+At very begging, the particle filters(green arrows) will emitted to the space from the Udacity bot while navigation to it's goal, the particle filters will convergence into the direction it is heading for extremely like human perception then reaction with focus. Fig 7 
+is Udacity bot enter it's finish line photo.
 %example for inserting image
 \begin{figure}[thpb]
       \centering
@@ -287,6 +289,8 @@ After parameter tuning and testing both robots are able to reach their destinati
       \label{fig:robot1}
 \end{figure}
 \subsubsection{Student}
+At the very beginning, the particle filters(green arrows) will emitted to the space from the Hsin bot while navigation to it's goal, the particle filters will convergence into the direction it is heading for extremely like human perception then reaction with focus.
+ Fig 8 is Hsin bot enter it's finish line photo.
 %example for inserting image
 \begin{figure}[thpb]
       \centering
@@ -302,41 +306,13 @@ After parameter tuning and testing both robots are able to reach their destinati
       \label{fig:robot1}
 \end{figure}
 \subsection{Technical Comparison} % only facts
-Discuss the difference of the layout, parameters, performance etc. between the benchmark robot and your robot. It is acceptable for your custom robot to perform worse than the provided robot. The focus is on learning and understanding, not performance. 
+The difference between Hsin bot and Udacity bot is the layout of Hsin bot has back shield and longer front chassis where mount on camera can observe more forward obstacles to response earlier. The back shield design is imitate from rocket but might need more test because the aerodynamic in high speed might lead the robot drift for stable the robot but in lower speed it might not need for consideration. By tuning parameters in move base, amcl lauch file and costmap common params file to update particles in higher frequency.
 
 \section{Discussion}
-
+The Hsin bot is a little bit faster than Udacity bot base on it's layout design and higher update particle filters frequency rate. AMCL package can quickly retrieve locality of the robot but still need fine tune the Navigation stack and move base parameter. In the 'Kidnapped Robot' problem base on AMCL use number of particles to adapt certainty of robot localization not on landmark but on laser base maps, laser scan to transform via message and topic to out put pose estimation. Base on no need rely on landmark, AMCL will have advantage over EKF in non statistic environment(unknown map).
  
-
-\subsection{Topics}
-\begin{itemize}
-\item Which robot performed better?
-\item Why it performed better? (opinion)
-\item How would you approach the 'Kidnapped Robot' problem?
-\item What types of scenario could localization be performed?
-\item Where would you use MCL/AMCL in an industry domain?
-\end {itemize}
-
 \section{Conclusion / Future work}
-This section is intended to summarize your report. Your summary should include a recap of the results, did this project achieve what you attempted, how would you deploy it on hardware and how could this project be applied to commercial products? 
-For Future Work, address areas of work that you may not have addressed in your report as possible next steps. This could be due to time constraints, lack of currently developed methods / technology, and areas of application outside of your current implementation. Again, avoid the use of the first-person.
-
-\subsection{Modifications for Improvement}
-Examples:
-\begin{itemize}
-\item Base Dimension
-\item Sensor Location
-\item Sensor Layout
-\item Sensor Amount
-\end{itemize}
-
-\subsection{Hardware Deployment}
-\begin{enumerate}
-\item What would need to be done?
-\item Computation time/resource considerations?
-\end{enumerate}
-
-
+For further improve localization accuracy with more computational resources need to update particle filters frequency slightly higher to gain higher accuracy in localization problem. A LIDAR can be add to provide more details map of the environment surround the robot. 
 
 \bibliography{bib}
 \bibliographystyle{ieeetr}
