@@ -1,2 +1,37 @@
+[image1]: ./images/rvizGoal.png
+[image2]: ./images/gazeboGoal.jpg
+[image3]: ./images/HsinBot1.jpg
+[image4]: ./images/HsinBot2.jpg
+[image5]: ./LATEX/laserrangefinder.png
+[image6]: ./LATEX/f2.png
+[image7]: ./LATEX/f3.png
+
 # RoboND-Where-Am-I
 Udacity Robotics Software Engineer Nanodegree Term 2 Localization Project
+
+# Result Video:
+
+## Udacity_bot:
+
+![][image5]
+
+### Udacity bot enter the goal 
+
+Gazebo                     |  Rviz
+:-------------------------:|:-------------------------:
+![][image7]                | ![][image6]
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/77fRZvHiigc/0.jpg)](https://youtu.be/77fRZvHiigc)  
+
+## Hsin_bot:
+Rviz                       |  Gazebo
+:-------------------------:|:-------------------------:
+![][image1]                | ![][image2]
+
+### Hsin bot enter the goal 
+
+Hsin bot                   | Hsin bot
+:-------------------------:|:-------------------------:
+![][image3]                | ![][image4]
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/zJbhJagSImg/0.jpg)](https://youtu.be/zJbhJagSImg)
