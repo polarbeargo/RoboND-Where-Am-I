@@ -25,13 +25,13 @@ Launch the AMCL node for localization:
 Launch Navigation stack  
 ``rosrun udacity_bot navigation_goal``  
 
-# Result Video:
+### Result Video:
 
-## Udacity_bot:
+### Udacity_bot:
 
 ![][image5]
 
-### Udacity bot enter the goal 
+### Udacity bot enter the goal: 
 
 Gazebo                     |  Rviz
 :-------------------------:|:-------------------------:
@@ -39,12 +39,12 @@ Gazebo                     |  Rviz
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/77fRZvHiigc/0.jpg)](https://youtu.be/77fRZvHiigc)  
 
-## Hsin_bot:
+### Hsin_bot:
 Rviz                       |  Gazebo
 :-------------------------:|:-------------------------:
 ![][image1]                | ![][image2]
 
-### Hsin bot enter the goal 
+### Hsin bot enter the goal: 
 
 Hsin bot                   | Hsin bot
 :-------------------------:|:-------------------------:
