@@ -10,7 +10,13 @@
 Udacity Robotics Software Engineer Nanodegree Term 2 Localization Project:
 
 ### Running the Scripts
-Run the following commands below in separate terminals:  
+Run the following commands below in separate terminals: 
+
+``
+cd /home/workspace/catkin_ws``    
+``catkin_make``   
+``source devel/setup.bash``
+
 Launch the world in Gazebo and RViz:  
 `` cd /home/workspace/catkin_ws/``  
 ``roslaunch udacity_bot udacity_world.launch``  
