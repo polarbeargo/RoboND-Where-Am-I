@@ -7,7 +7,17 @@
 [image7]: ./LATEX/f3.png
 
 # RoboND-Where-Am-I
-Udacity Robotics Software Engineer Nanodegree Term 2 Localization Project
+Udacity Robotics Software Engineer Nanodegree Term 2 Localization Project:
+
+### Running the Scripts
+Run the following commands below in separate terminals:  
+Launch the world in Gazebo and RViz:  
+`` cd /home/workspace/catkin_ws/``  
+``roslaunch udacity_bot udacity_world.launch``  
+Launch the AMCL node for localization:  
+``roslaunch udacity_bot amcl.launch``  
+Launch Navigation stack  
+``rosrun udacity_bot navigation_goal``  
 
 # Result Video:
 
